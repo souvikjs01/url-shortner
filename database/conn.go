@@ -2,9 +2,10 @@ package database
 
 import (
 	"context"
-	"log"
+	"fmt"
 	"os"
 	"time"
+	"url-shortner/types"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -20,6 +21,7 @@ var Mgr Manager
 
 type Manager interface {
 	Insert(interface{}, string) (interface{}, error)
+	GetUrlFromCode(string, string) (types.UrlDb, error)
 }
 
 func ConnectDB() {
@@ -27,7 +29,6 @@ func ConnectDB() {
 	if uri == "" {
 		return
 	}
-
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 	if err != nil {
@@ -41,10 +42,10 @@ func ConnectDB() {
 		return
 	}
 
-	log.Println("Successfully connected to MongoDB")
 	Mgr = &manager{
 		connection: client,
 		ctx:        ctx,
 		cancel:     cancel,
 	}
+	fmt.Println("DB is now connected")
 }

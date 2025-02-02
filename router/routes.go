@@ -7,5 +7,6 @@ import (
 )
 
 var urlsShortner = Routes{
-	Route{"url short service", http.MethodPost, constant.UrlShortnerPath, controller.ShortTheUrl},
+	Route{"Url short service", http.MethodPost, constant.UrlShortnerPath, controller.ShortTheUrl},
+	Route{"Redirect to url", http.MethodGet, constant.RedirectUrlPath, controller.RedirectUrl},
 }
