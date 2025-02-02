@@ -44,7 +44,7 @@ func ShortTheUrl(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"error":     false,
 		"data":      res,
-		"short url": url.ShortUrl,
+		"short_url": url.ShortUrl,
 	})
 }
 
