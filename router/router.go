@@ -51,7 +51,7 @@ func ClientRoutes() {
 	}
 	r.router.RedirectTrailingSlash = false
 	r.router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"}, // Allow requests from Next.js frontend
+		AllowOrigins:     []string{"*"}, // Allow requests from Next.js frontend
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
