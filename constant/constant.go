@@ -16,5 +16,5 @@ const (
 )
 
 const (
-	BaseUrl = "localhost:8000/v1/url/"
+	BaseUrl = "184.72.200.88:8000/v1/url/"
 )
